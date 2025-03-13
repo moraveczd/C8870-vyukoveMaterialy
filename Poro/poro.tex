@@ -1,0 +1,404 @@
+\documentclass[hyperref=unicode]{beamer}
+
+\usepackage[absolute,overlay]{textpos}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{mhchem}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage[utf8]{inputenc}
+
+\usepackage{animate}
+
+\setbeamerfont{footnote}{size=\tiny}
+
+\adjustboxset*{center}
+
+\mode<presentation>{\usetheme{default}}
+\DefineNamedColor{named}{pozadi}{RGB}{200,200,200}
+\usecolortheme{crane}
+
+\setbeamertemplate{footline}[frame number]
+\usepackage{fontspec} 
+\usepackage{unicode-math}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{czech}
+
+\def\uv#1{„#1“}
+
+\addtobeamertemplate{frametitle}{
+   \let\insertframetitle\insertsectionhead}{}
+\addtobeamertemplate{frametitle}{
+   \let\insertframesubtitle\insertsubsectionhead}{}
+
+\makeatletter
+  \CheckCommand*\beamer@checkframetitle{\@ifnextchar\bgroup\beamer@inlineframetitle{}}
+  \renewcommand*\beamer@checkframetitle{\global\let\beamer@frametitle\relax\@ifnextchar\bgroup\beamer@inlineframetitle{}}
+\makeatother
+\setbeamercolor{section in toc}{fg=blue}
+\setbeamertemplate{section in toc shaded}[default][100]
+
+\title[Crisis]
+{Porozimetrie}
+
+\author
+{Zdeněk Moravec}
+\date[KPT 2004]
+{hugo@chemi.muni.cz}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Porozimetrie}
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+	\begin{column}{.6\textwidth}
+		\begin{itemize}
+			\item Skupina metod pro stanovení měrného povrchu a porosity materiálů.
+			\item \textbf{Měrný povrch} - povrch materiálu vztažený na jednotku hmotnosti.
+			\item \textbf{Rtuťová intruzní porozimetrie} -- založena na vtlačování rtuti do pórů. Používá se pro stanovení pórů o velikostech od 4~nm do stovek mikrometrů. 
+			\item \textbf{Plynová porozimetrie} -- sorpce plynu na povrch vzorku. Používá se pro stanovení pórů o velikostech od 0,33~nm do stovek nanometrů.
+		\end{itemize}
+	\end{column}
+	\begin{column}{.5\textwidth}
+		\begin{figure}
+			\adjincludegraphics[width=.9\textwidth]{img/ZIF-8.png}
+			\caption*{Struktura porézního zeolitu ZIF-8.\footnote[frame]{Zdroj: \href{https://commons.wikimedia.org/wiki/File:Structure_of_ZIF-8(H).png}{François-Xavier Coudert/Commons}}}
+		\end{figure}
+	\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	Měrný povrch je důležitou charakteristikou katalyzátorů, sorpčních materiálů, apod.
+	\begin{columns}
+	\begin{column}{.5\textwidth}
+	\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Materiál} & \textbf{SA [m$^2$.g$^{-1}$]} \\\hline
+	MOF & 7140 \\\hline
+	Grafen & 2700 \\\hline
+	Aktivní uhlí & 500--3000 \\\hline
+	MCM-41 (\ce{SiO2}) & 1000 \\\hline
+	Molekulová síta & až 1000 \\\hline
+	Faujesite & 900 \\\hline
+	Alumina & 200 \\\hline
+	\ce{CaCO3} & 3 \\\hline
+\end{tabular}
+
+	\end{column}
+	\begin{column}{.5\textwidth}
+		\begin{center}
+			\begin{figure}
+				\adjincludegraphics[width=.8\textwidth]{img/Radial_mesoporous_silica.jpg}
+				\caption*{Mezoporézní silica.\footnote[frame]{Zdroj: \href{https://commons.wikimedia.org/wiki/File:Radial_mesoporous_silica.jpg}{Xin Min et al/Commons}}}
+			\end{figure}
+			
+			\textbf{Velikost pórů:}
+			
+			\begin{tabular}{ll}
+				Mikropóry & $<$2 nm \\
+				Mezopóry & 2--50 nm \\
+				Makropóry & $>$50 nm \\
+			\end{tabular}
+		\end{center}
+	\end{column}
+\end{columns}	
+	\vfill
+}
+
+\subsection{Rtuťová porozimetrie}
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+		\begin{column}{.6\textwidth}
+			\textbf{Rtuťová porozimetrie}
+			\begin{itemize}
+				\item Do vzorku je vtláčena rtuť.
+				\item Jde o destruktivní metodu.
+				\item Umožňuje měřit velikost pórů od 4~nm do stovek mikrometrů.
+				\item Čím vyšší tlak působí, tím se dostává rtuť do menších pórů, spodní hranici ovlivňuje maximální možný tlak.
+				\item Měření je poměrně rychlé.
+				\item Problémem je toxicita rtuti.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\adjincludegraphics[width=.78\textwidth]{img/Hg-porosimeter.png}
+				\caption*{Rtuťový porozimetr.\footnote[frame]{Zdroj: \href{https://www.quantachrome.com/pdf_brochures/07128.pdf}{Quantachrome}}}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\adjincludegraphics[width=\textwidth]{img/Hg-porosimetry.png}
+	\vfill
+}
+
+\subsection{Plynová porozimetrie}
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+		\begin{column}{.7\textwidth}
+			\textbf{Plynová porozimetrie}
+			\begin{itemize}
+				\item Stanovení porozity pomocí sledování sorpce plynu.
+				\item Využívá se dusík, argon a krypton.
+				\item Založeno na fyzisorpci -- nedochází k chemickým reakcím.
+				\item Tlaky se pohybují mezi atmosférickým tlakem a vakuem.
+				\item Měření trvá hodiny až dny a probíhá při teplotě varu daného plynu.
+			\end{itemize}
+			\begin{tabular}{|l|l|}
+				\hline
+				\textbf{Plyn} & \textbf{Teplota varu [$^\circ$C]} \\\hline
+				Dusík & $-$195 \\\hline
+				Argon & $-$185 \\\hline
+				Krypton & $-$152 \\\hline
+			\end{tabular}
+		\end{column}
+		\begin{column}{.3\textwidth}
+			\begin{center}
+				\adjincludegraphics[height=.8\textheight]{img/Kyvety.jpg}
+			\end{center}
+		\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item Před měřením je nutné vzorek (přesně navážený) odplynit (degasovat).
+				\item To se provádí zahříváním ve vakuu, doba a teplota závisí na konkrétním vzorku.
+				\item Teplota by neměla překročit 80 \% teploty tání nebo skelného přechodu, aby nedocházelo k~povrchovým změnám.
+				\item Teplotu je nutné volit i s~ohledem na teplotní stabilitu vzorku.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{center}
+				\adjincludegraphics[height=.8\textheight]{img/Degas2.jpg}
+			\end{center}
+		\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item Na začátku měření je vzorek evakuován a ochlazen na měřící teplotu.
+				\item Přístroj provede automatickou kalibraci -- stanovení \textit{cold volume} a \textit{warm volume}.
+				\item Do kyvety se vkládá skleněná tyčinka, která zmenšuje velikost mrtvého objemu.
+				\item Pro měření malých pórů je nutné dosáhnout velmi nízkého tlaku, k tomu se využívá \textit{turbomolekulární vývěva}.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{center}
+				\adjincludegraphics[height=.8\textheight]{img/Autosorb-iQ3.jpg}
+			\end{center}
+		\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+		\begin{column}{.65\textwidth}
+			\begin{itemize}
+				\item Byla vynalezena roku 1958 Dr. W.Beckerem.\footnote[frame]{\href{https://www.chemeurope.com/en/encyclopedia/Turbomolecular_pump.html}{Turbomolecular pump}}
+				\item Skládá se ze soustavy statických a rotujících lopatek.
+				\item Rotující lopatky se pohybují velmi vysokou rychlostí (25~000--90 000~rpm).
+			\end{itemize}
+		\end{column}
+		\begin{column}{.4\textwidth}
+			\begin{figure}
+				\adjincludegraphics[height=.5\textheight]{img/Cut_through_turbomolecular_pump.jpg}
+				\caption*{Řez turbomolekulární vývěvou.\footnote[frame]{Zdroj: \href{https://commons.wikimedia.org/wiki/File:Cut_through_turbomolecular_pump.jpg}{Liquidat/Commons}}}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+		\begin{column}{.6\textwidth}
+			\begin{itemize}
+				\item Vyžaduje předřazenou vývěvu pro vytvoření dostatečného vakua pro start. Tlak by měl být pod 10 Pa.
+				\item Hřídel s lopatkami je umístěna v magnetickém ložisku.
+				\item Umožňují dosažení tlaku až 10$^{-9}$~Pa a čerpací rychlosti až 4~000~l.s$^{-1}$.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.4\textwidth}
+			\begin{figure}
+				\adjincludegraphics[height=.5\textheight]{img/Turbo_pump_schematic-2011-05-02.png}
+				\caption*{Schéma turbomolekulární vývěvy.\footnote[frame]{Zdroj: \href{https://commons.wikimedia.org/wiki/File:Turbo_pump_schematic-2011-05-02.gif}{Kkmurray/Commons}}}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item Přístroj postupně zvyšuje tlak plynu v kyvetě a měření objem nasorbovaného plynu, který se projevuje poklesem tlaku.
+				\item Aby bylo možné měřit tlak s dostatečnou přesností potřebujeme velice přesný manometr a velmi dobře kalibrovaný manifold.
+				\item V manifoldu se nastaví vyšší tlak a po otevření kyvety dojde k poklesu tlaku, který lze dopředu spočítat ze známého objemu kyvety a manifoldu.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{center}
+				\adjincludegraphics[height=.8\textheight]{img/Mereni.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item Každý bod analýzy má zadány hodnoty \textit{equilibration} a \textit{tolerance}.
+				\item Equilibration udává, jak dlouho bude přístroj čekat na ustavení rovnováhy.
+				\item Tolerance udává rozptyl hodnot tlaků.
+				\item Jakmile je bod změřen, zvýší se tlak a měří se další.
+				\item Zpravidla měříme absorpčně-desorpční izotermu.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{center}
+				\adjincludegraphics[width=\textwidth]{img/Equilibration.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{itemize}
+		\item Příkladem mezoporézního materiálu je hexagonální silkát \textit{MCM-41}.
+		\item Jeho struktura sestává z válcovitých pórů o průměru 2 až 6~nm.
+		\item Připravit ho lze vodnou solgelovou syntézou, jako zdroj křemíku slouží zpravidla TEOS.
+		\item Velikost pórů můžeme ovlivnit volbou templátu, často se používá \textit{cetyltrimethylammonium bromid}.
+	\end{itemize}
+	\begin{figure}
+		\adjincludegraphics[width=\textwidth]{img/MCM41-Synthesis.png}
+		\caption*{Syntéza mezoporézního materiálu MCM-41.\footnote[frame]{Zdroj: \href{https://commons.wikimedia.org/wiki/File:MCM-41_Synthesis_English_2014.04.19.svg}{Hermann Luyken/Commons}}}
+	\end{figure}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{figure}
+		\adjincludegraphics[width=\textwidth]{img/MCM41-isotherm.png}
+		\caption*{Adsorpčně-desorpční izoterma MCM-41}
+	\end{figure}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{figure}
+		\adjincludegraphics[width=.78\textwidth]{img/Adsorption_of_Gases_in_Multimolecular_Layers.jpg}
+		\caption*{Adsorpce plynů na povrchu.\footnote[frame]{Zdroj: \href{https://commons.wikimedia.org/wiki/File:Adsorption_of_Gases_in_Multimolecular_Layers.jpg}{Ricardo Amaral/Commons}}}
+	\end{figure}
+	\vfill
+}
+
+\subsection{BET teorie}
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{itemize}
+		\item Brunauer–Emmett–Teller (BET) -- velmi používaný způsob výpočtu měrného povrchu.
+		\item Využívá začátek adsorpční izotermy (P/P$_0$ 0-0,3), kdy lze předpokládat vznik monovrstvy.
+		\item Vychází z několika (bohužel nereálných) předpokladů:
+		\begin{itemize}
+			\item plochý povrch adsorbentu
+			\item všechna adsorpční místa jsou energeticky ekvivalentní (homogenní)
+			\item neexistují vzájemné interakce mezi adsorbovanými molekulami
+			\item adsorpční energie je pro všechny molekuly vyjma první vrstvy rovna energii zkapalnění
+			adsorbátu
+			\item neomezený počet adsorpčních vrstev, nekonečný při nasyceném tlaku
+			\item rychlost desorpce molekul v určité vrstvě je rovna rychlosti kondenzace ve vrstvě o jednu níže
+		\end{itemize}
+		\item $\frac{\frac{p}{p_0}}{V(1-\frac{p}{p_0})} = \frac{1}{CV_m} + \frac{C-1}{CV_m}\frac{p}{p_0}$
+	\end{itemize}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{itemize}
+		\item Dříve se pro stanovení BET povrchu využívala sorpce v dusíku, dnes se doporučuje argon.
+		\item Molekula dusíku může zkreslovat výslednou hodnotu kvůli kvadrupolárnímu momentu molekuly dusíku. Může docházet k interakci s polárními místy na povrchu vzorku.
+		\item Pro měření s argonem potřebujeme kapalný argon nebo zařízení, které dokáže temperovat kyvetu na teplotu kapalného argonu.
+	\end{itemize}
+	\begin{columns}
+	\begin{column}{.5\textwidth}
+		\adjincludegraphics[height=.4\textheight]{img/Cryosync2.png}
+	\end{column}
+	\begin{column}{.5\textwidth}
+		\adjincludegraphics[height=.4\textheight]{img/Cryosync1.png}
+	\end{column}
+\end{columns}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{figure}
+		\adjincludegraphics[width=.9\textwidth]{img/BET.png}
+		\caption*{Jedenáctibodová izoterma}
+	\end{figure}
+	\vfill
+}
+
+\frame{
+	\frametitle{}
+	\vfill
+	\begin{figure}
+		\adjincludegraphics[width=.9\textwidth]{img/BET2.png}
+		\caption*{Jedenáctibodová BET křivka}
+	\end{figure}
+	\vfill
+}
+
+\end{document}
